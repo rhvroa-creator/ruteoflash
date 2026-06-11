@@ -881,7 +881,17 @@ function toast(msg){
 }
 
 // ===== BOOT =====
-document.addEventListener('DOMContentLoaded', loadGoogleAPIs);
+document.addEventListener('DOMContentLoaded', function(){
+  // Open app immediately — no login required
+  document.getElementById('login-screen').style.display='none';
+  document.getElementById('main-tb').style.display='flex';
+  loadBuiltinData();
+  setDate();
+  setSyncStatus('ok','Sin conectar');
+  sv('desp');
+  // Load Google APIs in background (Maps + optional Sheets sync)
+  loadGoogleAPIs();
+});
 </script>
 
 <script id="builtin-data" type="application/json">
